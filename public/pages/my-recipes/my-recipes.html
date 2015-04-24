@@ -8,10 +8,13 @@
   <!-- Tab content for each category -->
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane" ng-repeat="categoryObj in categorizedRecipes" id="{{categoryObj.category}}">
-      <input ng-model="search.name">
+      <div class="recipe-name-filter">
+        <span class="fa fa-search"></span>
+        <input placeholder='Filter recipes by name...' class="form-control" ng-model="search.name">
+      </div>
       <div>
         <div class="list-group recipe-list" ng-init="search.category=categoryObj.category">
-          <li class="list-group-item" ng-repeat="recipe in categoryObj.recipes | filter:search">{{recipe.name}}</li>
+          <li class="list-group-item" ng-repeat="recipe in categoryObj.recipes | filter:search" ng-click="showRecipeContent(recipe)">{{recipe.name}}</li>
         </div>
         <p class="recipe-content" ng-show="categoryHasRecipes(categoryObj.category)"></p>
       </div>

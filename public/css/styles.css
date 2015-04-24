@@ -91,6 +91,20 @@ ul.navbar-nav {
     cursor: pointer;
 }
 
+.recipe-name-filter {
+    text-align: center;
+    padding: 10px;
+}
+
+.recipe-name-filter * {
+    display: inline-block;
+}
+
+.recipe-name-filter input {
+    width: 50%;
+    margin-left: 5px;
+}
+
 .recipe-list {
     width: 50%;
     overflow-y: scroll;
@@ -113,6 +127,7 @@ ul.navbar-nav {
     display: inline-block;
     margin-left: 10px;
     border-radius: 4px;
+    padding: 10px
 }
 
 .recipe-search-input-group {
