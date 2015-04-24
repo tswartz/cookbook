@@ -30,7 +30,9 @@ app.controller('MyRecipesCtrl', function($scope, $http, $location)
     	return recipesInCategory.length > 0;
     };
 
-    $scope.showRecipeContent = function (recipe) {
-    	$('.recipe-content').text(recipe.content);
+    $scope.showRecipeContent = function (recipe, $event) {
+    	$('.recipe-list .list-group-item').removeClass("active-group-item");
+    	$($event.target).addClass("active-group-item");
+    	$('#' + recipe.category + ' .recipe-content').text(recipe.content);
     }
 });
