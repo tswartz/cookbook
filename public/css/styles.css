@@ -91,9 +91,10 @@ ul.navbar-nav {
     cursor: pointer;
 }
 
-.recipe-name-filter {
+.recipe-name-filter, .no-recipes-message {
     text-align: center;
-    padding: 10px;
+    padding: 30px 0px 10px 0px;
+    color: gray;
 }
 
 .recipe-name-filter * {
