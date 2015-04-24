@@ -91,19 +91,21 @@ ul.navbar-nav {
     cursor: pointer;
 }
 
-.recipe-name-filter, .no-recipes-message {
+.recipe-control-bar, .no-recipes-message {
     text-align: center;
     padding: 30px 0px 10px 0px;
     color: gray;
 }
 
-.recipe-name-filter * {
+
+.recipe-control-bar * {
     display: inline-block;
 }
 
-.recipe-name-filter input {
-    width: 50%;
+.recipe-control-bar input {
     margin-left: 5px;
+    margin-right: 10px;
+    width: 50%;
 }
 
 .recipe-list {

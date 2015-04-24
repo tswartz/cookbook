@@ -9,9 +9,16 @@
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane fade" ng-repeat="categoryObj in categorizedRecipes" id="{{categoryObj.category}}">
       <div class="no-recipes-message" ng-show="!categoryHasRecipes(categoryObj.category)">There are no saved recipes in this category</div>
-      <div class="recipe-name-filter" ng-show="categoryHasRecipes(categoryObj.category)">
-        <span class="fa fa-search"></span>
-        <input placeholder='Filter recipes by name...' class="form-control" ng-model="search.name">
+      <div class="recipe-control-bar" ng-show="categoryHasRecipes(categoryObj.category)">
+          <span class="fa fa-search"></span>
+          <input placeholder='Filter recipes by name...' class="form-control" ng-model="search.name">
+          <div class="btn-group" role="group" aria-label="edit-delete">
+            <button type="button" class="btn btn-default"><span class="fa fa-pencil"/></button>
+            <button type="button" class="btn btn-default"><span class="fa fa-trash"/></button>
+          </div>
+          <div class="btn-group" role="group" aria-label="add">
+            <button type="button" class="btn btn-default"><span class="fa fa-plus"/></button>
+          </div>
       </div>
       <div>
         <div class="list-group recipe-list">
