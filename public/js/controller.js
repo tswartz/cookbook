@@ -28,7 +28,7 @@ app.config(['$routeProvider', function ($routeProvider) {
     when('/home', {
         templateUrl: '../pages/home/home.html'
     }).
-    when('/login', {
+    when('/signin', {
         templateUrl: '../pages/login/login.html',
         controller: 'LoginCtrl'
     }).

@@ -36,7 +36,7 @@
                                 <span class="icon-bar"></span>
                             </button>
                             <a class="navbar-brand" href="#/home">
-                                <img src="logo.png" />
+                                <span class="fa fa-spoon"></span>
                                 <span>Cookbook</span>
                             </a>
                         </div>
@@ -56,7 +56,8 @@
             </header>
             <!-- other views will control the body of the page -->
             <main>
-                <div class="home-splash-gradient" ng-view></div>
+                <div ng-view class="view-container"></div>
+                <div class="home-splash-gradient"></div>
                 <div class="home-splash-img"></div>
             </main>
             <!-- Pop up dialog when user tries to favorite recipe without loggin in -->

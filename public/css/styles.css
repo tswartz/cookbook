@@ -6,12 +6,8 @@ body {
     margin-top: 80px;
 }
 
-nav a {
-    color: black;
-}
-
-nav {
-    background: white;
+nav * {
+    color: white;
 }
 
 .navbar-brand {
@@ -41,7 +37,6 @@ ul.navbar-nav {
 	left: 0;
 	color: white;
 	text-align: center;
-	font-size: 60px;
 	padding-top: 20%;
 	background: -moz-linear-gradient(top,  rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.32) 57%, rgba(0,0,0,0) 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.75)), color-stop(57%,rgba(0,0,0,0.32)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
@@ -62,8 +57,26 @@ ul.navbar-nav {
 	background-size: cover;
 }
 
+.view-container {
+    position: relative;
+    z-index: 2;
+    color: white;
+    margin-top: 15%;
+}
+
+.welcome-message {
+    text-align: center;
+    font-size: 60px;
+}
+
 .sign-in-up {
+    margin-top: 15%;
+    margin: 0px auto;
 	width: 30%;
+    text-align: center;
+    background: rgba(0,0,0,0.5);
+    border-radius: 8px;
+    padding: 16px;
 }
 
 .recipe-search-input-group {
