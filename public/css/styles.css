@@ -87,6 +87,11 @@ ul.navbar-nav {
     color: black;
 }
 
+.page-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 .nav-tabs li {
     cursor: pointer;
 }
@@ -106,6 +111,10 @@ ul.navbar-nav {
     margin-left: 5px;
     margin-right: 10px;
     width: 50%;
+}
+
+.btn-group {
+    margin-right: 10px;
 }
 
 .recipe-list {
@@ -131,6 +140,15 @@ ul.navbar-nav {
     margin-left: 10px;
     border-radius: 4px;
     padding: 10px
+}
+
+.modal {
+    position: absolute;
+    color: black;
+}
+
+.modal-body > * {
+    margin: 10px 0px;
 }
 
 .recipe-search-input-group {

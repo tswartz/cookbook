@@ -37,7 +37,7 @@ mongoose.connect('mongodb://' + connection_string);
 var UserSchema = new mongoose.Schema({
     username: String,
     password: String,
-    categories: { type: [String], default: ['Poultry', 'Beef', 'Seafood', 'Soups', 'Salads', 'Vegetarian', 'Desserts', 'Appetizers'] }
+    categories: { type: [String], default: ['All', 'Poultry', 'Beef', 'Seafood', 'Vegetarian', 'Soups', 'Salads', 'Appetizers', 'Desserts', 'Misc.'] }
 });
 var User = mongoose.model('User', UserSchema);
 var conn = mongoose.connection;
