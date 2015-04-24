@@ -2,6 +2,17 @@ var app = angular.module("CookbookApp", ["ngRoute"]);
 
 app.controller('CookbookController', function($scope, $http, $location, $sce)
 {
+    $scope.showSplashImg = function () {
+        $('.home-splash-gradient').show()
+        $('.home-splash-img').show()
+        $('nav').removeClass('white-background');
+    }
+
+    $scope.hideSplashImg = function () {
+        $('.home-splash-gradient').hide()
+        $('.home-splash-img').hide()
+        $('nav').addClass('white-background');
+    }
 
     // First check if there is a currently logged in user
     $http.get('/loggedin').success(function (user) {
@@ -26,7 +37,8 @@ app.controller('CookbookController', function($scope, $http, $location, $sce)
 app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.
     when('/home', {
-        templateUrl: '../pages/home/home.html'
+        templateUrl: '../pages/home/home.html',
+        controller: 'HomeCtrl'
     }).
     when('/signin', {
         templateUrl: '../pages/login/login.html',

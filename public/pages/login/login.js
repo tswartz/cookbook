@@ -1,5 +1,7 @@
 app.controller('LoginCtrl', function($scope, $http, $location)
 {
+    $scope.$parent.showSplashImg();
+    
     // call login endpoint to log in this user
     $scope.login = function (user) {
         $http.post('/login', user)

@@ -1,16 +1,20 @@
-<div role="tabpanel">
-
-  <!-- Nav tabs -->
+<div class="my-recipes" role="tabpanel">
+  <!-- Tabs with category names -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a data-target="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-    <li role="presentation"><a data-target="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+    <li ng-repeat="category in $parent.user.categories" role="presentation">
+      <a data-target="#{{category}}" aria-controls="{{category}}" role="tab" data-toggle="tab">{{category}}</a>
+    </li>
   </ul>
-
-  <!-- Tab panes -->
+  <!-- Tab content for each category -->
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="home">HOME</div>
-    <div role="tabpanel" class="tab-pane" id="profile">PROFILE</div>
-
+    <div role="tabpanel" class="tab-pane" ng-repeat="categoryObj in categorizedRecipes" id="{{categoryObj.category}}">
+      <input ng-model="search.name">
+      <div>
+        <div class="list-group recipe-list" ng-init="search.category=categoryObj.category">
+          <li class="list-group-item" ng-repeat="recipe in categoryObj.recipes | filter:search">{{recipe.name}}</li>
+        </div>
+        <p class="recipe-content" ng-show="categoryHasRecipes(categoryObj.category)"></p>
+      </div>
+    </div>
   </div>
-
 </div>

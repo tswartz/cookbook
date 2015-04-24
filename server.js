@@ -138,7 +138,8 @@ function insertNewUser(req, res, newuser)  {
 var RecipeSchema = new mongoose.Schema({
     name: String,
     content: String,
-    username: String
+    username: String,
+    category: String
 });
 var Recipe = mongoose.model('Recipe', RecipeSchema);
 

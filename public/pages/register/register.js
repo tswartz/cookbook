@@ -1,5 +1,7 @@
 app.controller('RegisterCtrl', function($scope, $http, $location)
 {
+    $scope.$parent.showSplashImg();
+    
     // Registers a new user
     $scope.register = function (newuser) {
         // Has 2 password fields to ensure that user is typing intended password
