@@ -55,7 +55,9 @@
                 </nav>
             </header>
             <!-- other views will control the body of the page -->
-            <main ng-view>
+            <main>
+                <div class="home-splash-gradient" ng-view></div>
+                <div class="home-splash-img"></div>
             </main>
             <!-- Pop up dialog when user tries to favorite recipe without loggin in -->
             <div class="modal fade" id="notLoggedInDialog">
