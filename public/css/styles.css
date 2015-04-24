@@ -180,7 +180,7 @@ hr.below-line {
 }
 
 .error-message {
-    color: red;
+    color: rgb(217, 83, 79);
 }
 .success-message {
     color: green;

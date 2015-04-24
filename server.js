@@ -134,6 +134,37 @@ function insertNewUser(req, res, newuser)  {
     });
 }
 
+// Recipe Schema and Model -------------------------------
+var RecipeSchema = new mongoose.Schema({
+    name: String,
+    content: String,
+    username: String
+});
+var Recipe = mongoose.model('Recipe', RecipeSchema);
+
+app.get('/recipes', function(req, res) {
+    var username = req.user.username;
+    Recipe.find({username: username}, function (err, recipes) {
+        if (err) {
+            res.status(401).send('Error in getting recipes');
+        } else {
+            res.json(recipes);
+        }
+    });
+});
+
+app.post('/recipe', function(req, res) {
+    var newRecipe = req.body;
+    newRecipe = new Recipe(newRecipe);
+    newRecipe.save(function (err, recipe) {
+        if (err) {
+            res.status(401).send('Error in creating new recipe');
+        } else {
+            res.send(recipe);
+        }
+    });
+});
+
 // Look for openshift port and ip first, if not, host locally
 var ip = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
