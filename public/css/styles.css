@@ -1,0 +1,174 @@
+body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    color: #333;
+    margin: 0px;
+    margin-top: 80px;
+}
+
+nav a {
+    color: black;
+}
+
+nav {
+    background: white;
+}
+
+.navbar-brand {
+    font-family: 'Lobster', cursive;
+    font-size: 40px;
+}
+
+.navbar-brand img {
+    margin-top: -10px;
+    display: inline;
+}
+
+ul.navbar-nav {
+    margin-top: 8px;
+}
+
+.navbar-toggle, .navbar-toggle .icon-bar {
+    border: 1px solid #BBB;
+}
+
+.home-splash-gradient {
+	position: absolute;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	color: white;
+	text-align: center;
+	font-size: 60px;
+	padding-top: 20%;
+	background: -moz-linear-gradient(top,  rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.32) 57%, rgba(0,0,0,0) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.75)), color-stop(57%,rgba(0,0,0,0.32)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(0,0,0,0.75) 0%,rgba(0,0,0,0.32) 57%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(0,0,0,0.75) 0%,rgba(0,0,0,0.32) 57%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(0,0,0,0.75) 0%,rgba(0,0,0,0.32) 57%,rgba(0,0,0,0) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(0,0,0,0.75) 0%,rgba(0,0,0,0.32) 57%,rgba(0,0,0,0) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bf000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+}
+
+.home-splash-img {
+	background-image: url("../pages/home/splash.jpg");
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-size: cover;
+}
+
+.sign-in-up {
+	width: 30%;
+}
+
+.recipe-search-input-group {
+    width: 50%;
+    margin: 30px auto;
+}
+
+.recipe-thumbnail h3 {
+    -webkit-line-clamp: 2; /* number of lines to show */
+    line-height: 26px;        /* fallback */
+    height: 52px;       /* fallback */
+}
+
+.pic-and-title {
+    margin-top: 10px;
+    height: 100px;
+}
+
+.pic-and-title img {
+    padding-right: 10px;
+    display: inline;
+    float: left;
+}
+
+.pic-and-title h3 {
+    display: inline;
+}
+
+hr.above-line {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+hr.below-line {
+    margin-top: 10px;
+}
+
+.profile-section {
+	display: inline-table;
+	vertical-align: top;
+	margin-right: 10px;
+    margin-top: 10px;
+}
+
+.bordered-profile-section {
+    border: 1px solid #eee;
+    padding: 10px;
+    border-radius: 7px;
+}
+
+.no-reviews-message {
+    color: gray;
+}
+
+#collapseLink {
+    text-transform: uppercase;
+    color: gray;
+    cursor: pointer;
+}
+
+.number-following {
+    font-size: 20px;
+    color: rgb(48, 141, 232);
+}
+
+.follow-button {
+    margin-top: 10px;
+}
+
+#followingCollapse ul {
+    list-style: none;
+}
+
+/* Details Page */
+.wrapper {
+    width: 80%;
+    margin: auto;
+}
+.details-pic {
+    margin-top: 24px;
+}
+
+.row .details {
+    margin-left: 0px;
+}
+
+.ingredients-list {
+    list-style: none;
+    padding-left: 15px;
+}
+
+.source-details {
+    margin-left: 15px;
+}
+
+.review {
+    border-bottom: 1px solid #BBB;
+}
+.review-cta a {
+    font-size: 4px;
+}
+
+.error-message {
+    color: red;
+}
+.success-message {
+    color: green;
+}

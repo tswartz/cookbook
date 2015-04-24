@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Lunchbox</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='http://fonts.googleapis.com/css?family=Raleway:500,800' rel='stylesheet' type='text/css'>
+        <link href="http://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/styles.css" rel="stylesheet">
+        <script src="js/jquery-2.1.3.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.js"></script>
+        <script src="js/controller.js"></script>
+        <script src="pages/login/login.js"></script>
+        <script src="pages/register/register.js"></script>
+        <script src="pages/profile/profile.js"></script>
+        <script src="pages/search/search.js"></script>
+        <script src="pages/details/details.js"></script>
+        <script src="pages/my-recipes/my-recipes.js"></script>
+    </head>
+    <body ng-app="LunchboxApp">
+        <div ng-controller="LunchboxController" class="container">
+            <header>
+                <nav class="navbar navbar-fixed-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#/home">
+                                <img src="logo.png" />
+                                <span>Lunch Box</span>
+                            </a>
+                        </div>
+                        <!-- nav bar links; "My Recipes" is only available if user is logged in -->
+                        <div id="navbar" class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li ><a href="#/home">Home</a></li>
+                                <li><a href="#/search">Search</a></li>
+                                <li><a ng-show="user != '0'" href="#/my-recipes">My Recipes</a></li>
+                            </ul>
+                            <!-- display "sign in" and "sign up" if no user, else display "user's profile" and "sign out" -->
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a ng-show="user == '0'" href="#/login">Sign In</a></li>
+                                <li><a ng-show="user == '0'" href="#/signup">Sign Up</a></li>
+                                <li><a ng-show="user != '0'" ng-attr-href="#/profile/{{user.username}}">{{user.username}}'s Profile</a></li>
+                                <li><a ng-show="user != '0'" href="#" ng-click="logout()">Sign Out</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+            <!-- other views will control the body of the page -->
+            <main ng-view>
+            </main>
+            <!-- Pop up dialog when user tries to favorite recipe without loggin in -->
+            <div class="modal fade" id="notLoggedInDialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        <h4 class="modal-title">Please Log In</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Please sign in or sign up as a new user to favorite recipes.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <a href="#/login" class="btn btn-default sign-in-up-buttons">Sign In</a>
+                            <a href="#/signup" class="btn btn-primary sign-in-up-buttons">Sign Up</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

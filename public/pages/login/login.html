@@ -1,0 +1,11 @@
+<h1>Login</h1>
+
+<p class="error-message">{{errorMessage}}</p>
+
+<br/>
+<!-- Login form, space for error messages above -->
+<div class="sign-in-up">
+	<input placeholder='Username' ng-model='loginuser.username' type='text' class='form-control'/><br/>
+	<input placeholder='Password' ng-model='loginuser.password' type='password' class='form-control'/><br/>
+	<button class="btn btn-primary" ng-click='login(loginuser)'>Login</button>
+</div>
