@@ -40,10 +40,6 @@ app.controller('MyRecipesCtrl', function($scope, $http, $location)
     };
 
     $scope.addRecipe = function (category) {
-    	if ($scope.form) {
-	    	$scope.form.$setPristine();
-	      	$scope.form.$setUntouched();
-	    }
     	$scope.dialogTitle = "Add New Recipe";
     	$scope.dialogAction = "Add";
     	$('#addEditRecipeModal').modal('show');
@@ -53,6 +49,12 @@ app.controller('MyRecipesCtrl', function($scope, $http, $location)
 			}
     		console.log("adding", newRecipe);
     	};
+        if ($scope.form) {
+            $scope.newRecipe = {};
+            $scope.form.$setPristine();
+            $scope.form.$setUntouched();
+        }
+        $('#addEditRecipeModal').modal('show');
     };
 
     $scope.editRecipe = function (category) {

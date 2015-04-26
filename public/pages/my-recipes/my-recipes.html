@@ -46,7 +46,7 @@
           <div class="modal-body">
             <input type="text" name="name" placeholder="Recipe name..." class='form-control' ng-model="newRecipe.name" required>
             <div class="error-message" ng-show="form.$submitted || form.name.$touched">
-              <span ng-show="form.name.$error.required">Course name required.</span>
+              <span ng-show="form.name.$error.required">Recipe name required.</span>
             </div>
             <select name="category" class="form-control" ng-model="newRecipe.category" required>
               <option value="" disabled selected>Select category</option>
@@ -55,7 +55,10 @@
             <div class="error-message" ng-show="form.$submitted || form.category.$touched">
               <span ng-show="form.category.$error.required">Category required.</span>
             </div>
-            <textarea name="content" placeholder="Recipe content..." class='form-control' ng-model="newRecipe.content"></textarea>
+            <textarea name="content" placeholder="Recipe content..." class='form-control' ng-model="newRecipe.content" required></textarea>
+            <div class="error-message" ng-show="form.$submitted || form.content.$touched">
+              <span ng-show="form.content.$error.required">Recipe content required.</span>
+            </div>
           </div>
           <div class="modal-footer">
               <button class="btn btn-default" data-dismiss="modal">Cancel</button>
