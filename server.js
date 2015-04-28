@@ -172,8 +172,18 @@ app.put('/category', function (req, res) {
                 return;
             }
             User.update({username: req.user.username}, {"categories": categories}, function (err, updatedDoc) {
-                req.user.categories = categories;
-                res.send(req.user);
+                if (err) {
+                    res.status(401).send('There was an error in renaming ' + oldCategory + '.');
+                } else {
+                    Recipe.update({username: req.user.username, "category": oldCategory}, {"category": newCategory}, {multi: true}, function (err, recipes) {
+                        if (err) {
+                            res.status(401).send('There was an error in renaming ' + oldCategory + '.');
+                        } else {
+                            req.user.categories = categories;
+                            res.send(req.user);
+                        }
+                    });
+                }
             });
         }
     });
@@ -209,7 +219,7 @@ app.post('/recipe', function(req, res) {
     var newRecipe = req.body;
     newRecipe.username = req.user.username;
     newRecipe = new Recipe(newRecipe);
-    Recipe.findOne({name: newRecipe.name}, function (err, recipe) {
+    Recipe.findOne({name: newRecipe.name, username: req.user.username}, function (err, recipe) {
         // first check to see if there is recipe with that name already 
         // (in which case recipe would be non-null)
         if (err || recipe) {
@@ -228,7 +238,7 @@ app.post('/recipe', function(req, res) {
 });
 
 var updateRecipe = function (updatedRecipe, origName, req, res) {
-    Recipe.update({name: origName}, updatedRecipe, function (err, recipe) {
+    Recipe.update({name: origName, username: req.user.username}, updatedRecipe, function (err, recipe) {
         if (err) {
             res.status(401).send('Error in editing recipe');
         } else {
@@ -248,7 +258,7 @@ app.put('/recipe', function(req, res) {
         return;
     }
     // Otherwise, make sure the new name doesn't match an already-existing recipe
-    Recipe.findOne({name: updatedRecipe.name}, function (err, recipe) {
+    Recipe.findOne({name: updatedRecipe.name, username: req.user.username}, function (err, recipe) {
         // first check to see if there is recipe with that name already 
         // (in which case recipe would be non-null)
         if (err || recipe) {
