@@ -134,6 +134,22 @@ function insertNewUser(req, res, newuser)  {
     });
 }
 
+app.post('/category', function (req, res) {
+    var newCategory = req.body.newCategory;
+    User.findOne({username: req.user.username}, function (err,doc) {
+        if (err) {
+            res.status(401).send('An error occurred');
+        } else {
+            var categories = doc.categories;
+            categories.push(newCategory);
+            User.update({username: req.user.username}, {"categories": categories}, function (err, updatedDoc) {
+                req.user.categories = categories;
+                res.send(req.user);
+            });
+        }
+    });
+});
+
 // Recipe Schema and Model -------------------------------
 var RecipeSchema = new mongoose.Schema({
     name: String,

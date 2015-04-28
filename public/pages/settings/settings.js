@@ -16,7 +16,11 @@ app.controller('SettingsCtrl', function($scope, $http, $location)
         }
         $scope.submitCategory = function (newCategory) {
             if ($scope.form.$invalid) return;
-            console.log(newCategory);
+            $('#addEditCategoryModal').modal('hide');
+            $http.post('/category', {newCategory: newCategory})
+            .success(function (response) {
+                $scope.$parent.user = response;
+            });
         }
         $('#addEditCategoryModal').modal('show');
     }
