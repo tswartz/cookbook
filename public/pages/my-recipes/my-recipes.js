@@ -32,10 +32,8 @@ app.controller('MyRecipesCtrl', function($scope, $http, $location)
     	return ($scope.categorizedRecipes[category]).length > 0;
     };
 
-    $scope.showRecipeContent = function (recipe, category, $event) {
+    $scope.showRecipeContent = function (recipe, category) {
     	$scope.selectedRecipes[category] = recipe;
-    	$('.tab-pane#' + category + ' .list-group-item').removeClass("active-group-item");
-    	$($event.target).addClass("active-group-item");
     	$('#' + category + ' .recipe-content').text(recipe.content);
     };
 
@@ -70,14 +68,15 @@ app.controller('MyRecipesCtrl', function($scope, $http, $location)
     	$scope.dialogAction = "Save Changes";
         $scope.newRecipe = recipe;
     	$scope.submitRecipe = function (newRecipe) {
+            if ($scope.form.$invalid) return;
+            $('#addEditRecipeModal').modal('hide');
             var origRecipe = $scope.selectedRecipes[category];
             var data = {origName:origRecipe.name, recipe: newRecipe};
     		$http.put('/recipe', data)
             .success(function (response) {
                 $scope.recipes = response;
                 $scope.categorizeRecipes();
-                $scope.selectedRecipes[category] = newRecipe;
-                $('#' + category + ' .recipe-content').text(newRecipe.content);
+                $scope.showRecipeContent(newRecipe, category);
             });
     	};
         $('#addEditRecipeModal').modal('show');
