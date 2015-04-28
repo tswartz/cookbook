@@ -65,14 +65,20 @@ app.controller('MyRecipesCtrl', function($scope, $http, $location)
             $('#selectRecipeModal').modal('show');
             return;
         }
-        recipe = $.extend(true, {}, recipe)
+        recipe = $.extend(true, {}, recipe); // Clone it!!!
     	$scope.dialogTitle = "Edit Recipe";
     	$scope.dialogAction = "Save Changes";
         $scope.newRecipe = recipe;
     	$scope.submitRecipe = function (newRecipe) {
-    		console.log("editing", newRecipe);
-            // success after endpoint:
-            // $scope.selectedRecipes[category] = newRecipe;
+            var origRecipe = $scope.selectedRecipes[category];
+            var data = {origName:origRecipe.name, recipe: newRecipe};
+    		$http.put('/recipe', data)
+            .success(function (response) {
+                $scope.recipes = response;
+                $scope.categorizeRecipes();
+                $scope.selectedRecipes[category] = newRecipe;
+                $('#' + category + ' .recipe-content').text(newRecipe.content);
+            });
     	};
         $('#addEditRecipeModal').modal('show');
     };

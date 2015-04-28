@@ -182,6 +182,39 @@ app.post('/recipe', function(req, res) {
     });
 });
 
+var updateRecipe = function (updatedRecipe, origName, req, res) {
+    Recipe.update({name: origName}, updatedRecipe, function (err, recipe) {
+        if (err) {
+            res.status(401).send('Error in editing recipe');
+        } else {
+            sendAllRecipes(req, res);
+        }
+    });
+};
+
+// Editing a recipe
+app.put('/recipe', function(req, res) {
+    var data = req.body;
+    var origName = data.origName;
+    var updatedRecipe = data.recipe;
+    // If the recipe's name is NOT changing, go ahead and update
+    if (origName == updatedRecipe.name) {
+        updateRecipe(updatedRecipe, origName, req, res);
+        return;
+    }
+    // Otherwise, make sure the new name doesn't match an already-existing recipe
+    Recipe.findOne({name: updatedRecipe.name}, function (err, recipe) {
+        // first check to see if there is recipe with that name already 
+        // (in which case recipe would be non-null)
+        if (err || recipe) {
+            res.status(401).send('There is already a recipe called ' + updatedRecipe.name + '. Please choose a new name.');
+        // Otherwise, updated the recipe
+        } else {
+            updateRecipe(updatedRecipe, origName, req, res);
+        }
+    });
+});
+
 // Look for openshift port and ip first, if not, host locally
 var ip = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
