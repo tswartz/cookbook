@@ -143,7 +143,7 @@ var RecipeSchema = new mongoose.Schema({
 });
 var Recipe = mongoose.model('Recipe', RecipeSchema);
 
-app.get('/recipes', function(req, res) {
+var sendAllRecipes = function (req, res) {
     var username = req.user.username;
     Recipe.find({username: username}, function (err, recipes) {
         if (err) {
@@ -152,16 +152,32 @@ app.get('/recipes', function(req, res) {
             res.json(recipes);
         }
     });
+}
+
+app.get('/recipes', function(req, res) {
+    sendAllRecipes(req, res);
 });
 
+// Adding a new recipe
+// No duplicates!!
 app.post('/recipe', function(req, res) {
     var newRecipe = req.body;
+    newRecipe.username = req.user.username;
     newRecipe = new Recipe(newRecipe);
-    newRecipe.save(function (err, recipe) {
-        if (err) {
-            res.status(401).send('Error in creating new recipe');
+    Recipe.findOne({name: newRecipe.name}, function (err, recipe) {
+        // first check to see if there is recipe with that name already 
+        // (in which case recipe would be non-null)
+        if (err || recipe) {
+            res.status(401).send('There is already a recipe called ' + newRecipe.name + '. Please choose a new name.');
+        // Otherwise, add the new recipe to the db
         } else {
-            res.send(recipe);
+            newRecipe.save(function (err, recipe) {
+                if (err) {
+                    res.status(401).send('Error in creating new recipe');
+                } else {
+                    sendAllRecipes(req, res);
+                }
+            });
         }
     });
 });

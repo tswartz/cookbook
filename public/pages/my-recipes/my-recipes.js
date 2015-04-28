@@ -43,10 +43,13 @@ app.controller('MyRecipesCtrl', function($scope, $http, $location)
     	$scope.dialogTitle = "Add New Recipe";
     	$scope.dialogAction = "Add";
     	$scope.submitRecipe = function (newRecipe) {
-    		if ($scope.form.$invalid) {
-				return;
-			}
+    		if ($scope.form.$invalid) return;
     		$('#addEditRecipeModal').modal('hide');
+            $http.post('/recipe', newRecipe)
+            .success(function (response) {
+                $scope.recipes = response;
+                $scope.categorizeRecipes();
+            });
     	};
         if ($scope.form) {
             $scope.form.$setPristine();
