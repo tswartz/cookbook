@@ -10,7 +10,7 @@
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane fade" ng-repeat="category in $parent.user.categories" id="{{category}}">
       <div class="no-recipes-message" ng-show="!categoryHasRecipes(category)">There are no saved recipes in this category</div>
-      <div class="recipe-control-bar" ng-show="categoryHasRecipes(category)">
+      <div class="toolbar" ng-show="categoryHasRecipes(category)">
           <span class="fa fa-search"></span>
           <input placeholder='Filter recipes by name...' class="form-control" ng-model="search.name">
           <div class="btn-group" role="group" aria-label="edit-delete">

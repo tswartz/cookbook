@@ -1,11 +1,22 @@
-<div class="my-recipes" role="tabpanel">
+<div class="settings" role="tabpanel">
 	<h1 class="page-title">Settings - <span class="settings-username">{{$parent.user.username}}</span></h1>
   	<hr/>
-  	<h4>Categories</h4>
-  	<div class="list-group recipe-list">
+  	<h3 class="page-subtitle">Categories</h3>
+  	<div class="toolbar" role="toolbar">
+  		<div class="btn-group" role="group" aria-label="edit-delete">
+        	<button type="button" class="btn btn-default" ng-click="editCategory()"><span class="fa fa-pencil"/></button>
+        	<button type="button" class="btn btn-default" ng-click="deleteCategory()"><span class="fa fa-trash"/></button>
+      	</div>
+      	<div class="btn-group" role="group" aria-label="add">
+        <button type="button" class="btn btn-default" ng-click="addCategory()">
+          <span class="fa fa-plus"/>
+        </button>
+      </div>
+  	</div>
+  	<ul class="list-group categories-list">
   		<li class="list-group-item disabled">All</li>
 		<li class="list-group-item" ng-repeat="category in $parent.user.categories" ng:class="{true:'active-group-item', false:''}[selectedCategory == category]" ng-click="selectCategory(category)" ng-show="category != 'All'">
 		{{category}}
 		</li>
-	</div>
+	</ul>
 </div>

@@ -92,22 +92,26 @@ ul.navbar-nav {
     margin-bottom: 20px;
 }
 
+.page-subtitle {
+    text-align: center;
+}
+
 .nav-tabs li {
     cursor: pointer;
 }
 
-.recipe-control-bar, .no-recipes-message {
+.toolbar, .no-recipes-message {
     text-align: center;
-    padding: 30px 0px 10px 0px;
+    padding: 10px 0px;
     color: gray;
 }
 
 
-.recipe-control-bar * {
+.toolbar * {
     display: inline-block;
 }
 
-.recipe-control-bar input {
+.toolbar input {
     margin-left: 5px;
     margin-right: 10px;
     width: 50%;
@@ -158,6 +162,13 @@ ul.navbar-nav {
 
 .settings-username {
     font-style: italic;
+}
+
+.categories-list {
+    margin: 0px auto;
+    width: 50%;
+    overflow-y: scroll;
+    height: 420px;
 }
 
 .recipe-thumbnail h3 {
