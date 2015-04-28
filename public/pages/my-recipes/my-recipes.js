@@ -47,6 +47,10 @@ app.controller('MyRecipesCtrl', function($scope, $http, $location)
                 $scope.recipes = response;
                 $scope.categorizeRecipes();
                 $scope.showRecipeContent(newRecipe, newRecipe.category);
+            })
+            .error(function (response) {
+                $scope.errorMessage = response;
+                $('#errorModal').modal('show');
             });
     	};
         if ($scope.form) {
@@ -81,6 +85,10 @@ app.controller('MyRecipesCtrl', function($scope, $http, $location)
                         $scope.showRecipeContent(newRecipe, cat);
                     }
                 }
+            })
+            .error(function (response) {
+                $scope.errorMessage = response;
+                $('#errorModal').modal('show');
             });
     	};
         $('#addEditRecipeModal').modal('show');
@@ -99,6 +107,10 @@ app.controller('MyRecipesCtrl', function($scope, $http, $location)
             .success(function (response) {
                 $scope.recipes = response;
                 $scope.categorizeRecipes();
+            })
+            .error(function (response) {
+                $scope.errorMessage = response;
+                $('#errorModal').modal('show');
             });
         };
         $('#deleteRecipeModal').modal('show');
