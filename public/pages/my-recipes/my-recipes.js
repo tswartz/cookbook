@@ -42,33 +42,47 @@ app.controller('MyRecipesCtrl', function($scope, $http, $location)
     $scope.addRecipe = function (category) {
     	$scope.dialogTitle = "Add New Recipe";
     	$scope.dialogAction = "Add";
-    	$('#addEditRecipeModal').modal('show');
     	$scope.submitRecipe = function (newRecipe) {
     		if ($scope.form.$invalid) {
 				return;
 			}
-    		console.log("adding", newRecipe);
+    		$('#addEditRecipeModal').modal('hide');
     	};
         if ($scope.form) {
-            $scope.newRecipe = {};
             $scope.form.$setPristine();
             $scope.form.$setUntouched();
         }
+        $scope.newRecipe = {};
         $('#addEditRecipeModal').modal('show');
     };
 
     $scope.editRecipe = function (category) {
     	var recipe = $scope.selectedRecipes[category];
-    	console.log("editing", recipe);
+        if (!recipe) {
+            $('#selectRecipeModal').modal('show');
+            return;
+        }
+        recipe = $.extend(true, {}, recipe)
     	$scope.dialogTitle = "Edit Recipe";
     	$scope.dialogAction = "Save Changes";
-    	$('#addEditRecipeModal').modal('show');
+        $scope.newRecipe = recipe;
     	$scope.submitRecipe = function (newRecipe) {
     		console.log("editing", newRecipe);
+            // success after endpoint:
+            // $scope.selectedRecipes[category] = newRecipe;
     	};
+        $('#addEditRecipeModal').modal('show');
     };
 
     $scope.deleteRecipe = function (category) {
     	var recipe = $scope.selectedRecipes[category];
+        if (!recipe) {
+            $('#selectRecipeModal').modal('show');
+            return;
+        }
+        $scope.newRecipe = recipe;
+        $scope.submitRecipe = function (newRecipe) {
+            console.log("deleting", newRecipe);
+        };
     };
 });
