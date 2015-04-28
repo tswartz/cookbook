@@ -55,7 +55,7 @@ app.controller('MyRecipesCtrl', function($scope, $http, $location)
             $scope.form.$setPristine();
             $scope.form.$setUntouched();
         }
-        $scope.newRecipe = {};
+        $scope.newRecipe = category != 'All' ? {category: category} : {};
         $('#addEditRecipeModal').modal('show');
     };
 
