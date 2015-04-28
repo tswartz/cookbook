@@ -273,7 +273,7 @@ app.put('/recipe', function(req, res) {
 // Deleting a recipe
 app.put('/removeRecipe', function(req, res) {
     var recipeToRemove = req.body;
-    Recipe.remove({ name: recipeToRemove.name }, function (err) {
+    Recipe.remove({ name: recipeToRemove.name, username: req.user.username }, function (err) {
       if (err) {
         res.status(401).send('Error in deleting recipe');
       } else {
