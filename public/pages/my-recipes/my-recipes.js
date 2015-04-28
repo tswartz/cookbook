@@ -34,7 +34,6 @@ app.controller('MyRecipesCtrl', function($scope, $http, $location)
 
     $scope.showRecipeContent = function (recipe, category) {
     	$scope.selectedRecipes[category] = recipe;
-    	$('#' + category + ' .recipe-content').text(recipe.content);
     };
 
     $scope.addRecipe = function (category) {
@@ -76,7 +75,11 @@ app.controller('MyRecipesCtrl', function($scope, $http, $location)
             .success(function (response) {
                 $scope.recipes = response;
                 $scope.categorizeRecipes();
-                $scope.showRecipeContent(newRecipe, category);
+                for (var cat in $scope.selectedRecipes) {
+                    if ($scope.selectedRecipes.hasOwnProperty(cat) && $scope.selectedRecipes[cat].name == origRecipe.name) {
+                        $scope.showRecipeContent(newRecipe, cat);
+                    }
+                }
             });
     	};
         $('#addEditRecipeModal').modal('show');

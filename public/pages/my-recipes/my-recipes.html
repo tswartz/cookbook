@@ -35,7 +35,9 @@
             {{recipe.name}}
           </li>
         </div>
-        <p class="recipe-content" ng-show="categoryHasRecipes(category)"></p>
+        <p class="recipe-content" ng-show="categoryHasRecipes(category)">
+          <span ng-show="selectedRecipes[category]">{{selectedRecipes[category].content}}</span>
+        </p>
       </div>
     </div>
   </div>
