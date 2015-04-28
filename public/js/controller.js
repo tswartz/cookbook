@@ -48,9 +48,9 @@ app.config(['$routeProvider', function ($routeProvider) {
         templateUrl: '../pages/register/register.html',
         controller: 'RegisterCtrl'
     }).
-    when('/settings/:username', {
+    when('/settings', {
         templateUrl: '../pages/settings/settings.html',
-        controller: 'ProfileCtrl'
+        controller: 'SettingsCtrl'
     }).
     when('/my-recipes', {
         templateUrl: '../pages/my-recipes/my-recipes.html',

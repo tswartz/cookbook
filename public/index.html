@@ -20,6 +20,7 @@
         <script src="pages/login/login.js"></script>
         <script src="pages/register/register.js"></script>
         <script src="pages/my-recipes/my-recipes.js"></script>
+        <script src="pages/settings/settings.js"></script>
     </head>
     <body ng-app="CookbookApp">
         <div ng-controller="CookbookController" class="container">
@@ -45,7 +46,7 @@
                                 <li><a ng-show="user == '0'" href="#/signin">Sign In</a></li>
                                 <li><a ng-show="user == '0'" href="#/signup">Sign Up</a></li>
                                 <li><a ng-show="user != '0'" href="#/my-recipes">My Recipes</a></li>
-                                <li><a ng-show="user != '0'" ng-attr-href="#/settings/{{user.username}}">Settings</a></li>
+                                <li><a ng-show="user != '0'" href="#/settings">Settings</a></li>
                                 <li><a ng-show="user != '0'" href="#" ng-click="logout()">Sign Out</a></li>
                             </ul>
                         </div>

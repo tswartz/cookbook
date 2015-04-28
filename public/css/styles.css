@@ -83,7 +83,7 @@ ul.navbar-nav {
     padding: 16px;
 }
 
-.my-recipes {
+.my-recipes, .settings {
     color: black;
 }
 
@@ -154,6 +154,10 @@ ul.navbar-nav {
 .recipe-search-input-group {
     width: 50%;
     margin: 30px auto;
+}
+
+.settings-username {
+    font-style: italic;
 }
 
 .recipe-thumbnail h3 {
