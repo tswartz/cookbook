@@ -34,7 +34,7 @@ app.controller('MyRecipesCtrl', function($scope, $http, $location)
 
     $scope.showRecipeContent = function (recipe, category, $event) {
     	$scope.selectedRecipes[category] = recipe;
-    	$('.recipe-list .list-group-item').removeClass("active-group-item");
+    	$('.tab-pane#' + category + ' .list-group-item').removeClass("active-group-item");
     	$($event.target).addClass("active-group-item");
     	$('#' + category + ' .recipe-content').text(recipe.content);
     };
