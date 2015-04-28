@@ -1,4 +1,5 @@
-<div class="my-recipes" role="tabpanel">
+<h3 class="splash-message not-logged-in-message" ng-show="$parent.user == '0'">Please log in to view your recipes.</h3>
+<div class="my-recipes" ng-show="$parent.user != '0'" role="tabpanel">
   <h1 class="page-title">My Recipes</h1>
   <!-- Tabs with category names -->
   <ul class="nav nav-tabs" role="tablist">

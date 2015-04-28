@@ -75,6 +75,10 @@ ul.navbar-nav {
     text-shadow: 1px 2px 5px rgba(0,0,0,0.5);
 }
 
+.not-logged-in-message {
+    font-size: 24px;
+}
+
 .sign-in-up {
     margin: 15% auto;
 	width: 30%;

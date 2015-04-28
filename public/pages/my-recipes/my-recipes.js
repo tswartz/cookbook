@@ -1,16 +1,18 @@
 app.controller('MyRecipesCtrl', function($scope, $http, $location)
 {
-	$scope.selectedRecipes = {};
-	$scope.nonAllCategories = $scope.$parent.user.categories.filter(function(category){
-		return category != 'All';
-	});
-	$scope.$parent.hideSplashImg();
-
-    $http.get('/recipes')
-    .success(function (response) {
-        $scope.recipes = response;
-        $scope.categorizeRecipes();
-    });
+	
+    if ($scope.$parent.user != '0') {
+        $scope.$parent.hideSplashImg();
+        $scope.selectedRecipes = {};
+        $scope.nonAllCategories = $scope.$parent.user.categories.filter(function(category){
+            return category != 'All';
+        });
+        $http.get('/recipes')
+        .success(function (response) {
+            $scope.recipes = response;
+            $scope.categorizeRecipes();
+        });
+    }
 
     $scope.categorizeRecipes = function () {
     	var categorizedRecipes = {};

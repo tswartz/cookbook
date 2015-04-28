@@ -1,4 +1,5 @@
-<div class="settings" role="tabpanel">
+<h3 class="splash-message not-logged-in-message" ng-show="$parent.user == '0'">Please log in to view your settings.</h3>
+<div class="settings" ng-show="$parent.user != '0'" role="tabpanel">
 	<h1 class="page-title">Settings - <span class="settings-username">{{$parent.user.username}}</span></h1>
   	<hr/>
   	<h3 class="page-subtitle">Categories</h3>

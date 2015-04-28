@@ -1,7 +1,9 @@
 app.controller('SettingsCtrl', function($scope, $http, $location)
 {
-    $scope.$parent.hideSplashImg();
-    
+    if ($scope.$parent.user != '0') {
+        $scope.$parent.hideSplashImg();
+    }
+
     $scope.selectCategory = function (category) {
         $scope.selectedCategory = category;
     };
