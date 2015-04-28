@@ -134,6 +134,7 @@ function insertNewUser(req, res, newuser)  {
     });
 }
 
+// Adding a new category
 app.post('/category', function (req, res) {
     var newCategory = req.body.newCategory;
     User.findOne({username: req.user.username}, function (err,doc) {
@@ -146,6 +147,30 @@ app.post('/category', function (req, res) {
                 return;
             }
             categories.push(newCategory);
+            User.update({username: req.user.username}, {"categories": categories}, function (err, updatedDoc) {
+                req.user.categories = categories;
+                res.send(req.user);
+            });
+        }
+    });
+});
+
+// Renaming a category
+app.put('/category', function (req, res) {
+    var newCategory = req.body.newCategory;
+    var oldCategory = req.body.oldCategory;
+    User.findOne({username: req.user.username}, function (err,doc) {
+        if (err) {
+            res.status(401).send('An error occurred');
+        } else {
+            var categories = doc.categories;
+            var index = categories.indexOf(oldCategory);
+            if (index != -1) {
+                categories[index] = newCategory;
+            } else {
+                res.status(401).send('There was an error in renaming ' + oldCategory + '.');
+                return;
+            }
             User.update({username: req.user.username}, {"categories": categories}, function (err, updatedDoc) {
                 req.user.categories = categories;
                 res.send(req.user);
