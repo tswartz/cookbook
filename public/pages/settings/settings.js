@@ -72,12 +72,19 @@ app.controller('SettingsCtrl', function($scope, $http, $location)
         }
         $scope.submitCategory = function (deleteCategory) {
             if ($scope.form.$invalid) return;
+            $('#deleteCategoryModal').modal('hide');
             var deleteData = {categoryToDelete : $scope.selectedCategory};
             if (deleteCategory.moveRecipes) {
                 deleteData.newCategory = deleteCategory.newCategory;
             }
-            
-            console.log(deleteCategory);
+            $http.put('/removeCategory', deleteData)
+            .success(function (response) {
+                $scope.$parent.user = response;
+            })
+            .error(function (response) {
+                $scope.errorMessage = response;
+                $('#errorModal').modal('show');
+            });
         }
         $('#deleteCategoryModal').modal('show');
     }
