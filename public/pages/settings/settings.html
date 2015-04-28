@@ -1,0 +1,11 @@
+<div class="my-recipes" role="tabpanel">
+	<h1 class="page-title">Settings - <span class="settings-username">{{$parent.user.username}}</span></h1>
+  	<hr/>
+  	<h4>Categories</h4>
+  	<div class="list-group recipe-list">
+  		<li class="list-group-item disabled">All</li>
+		<li class="list-group-item" ng-repeat="category in $parent.user.categories" ng:class="{true:'active-group-item', false:''}[selectedCategory == category]" ng-click="selectCategory(category)" ng-show="category != 'All'">
+		{{category}}
+		</li>
+	</div>
+</div>
