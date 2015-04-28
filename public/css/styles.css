@@ -143,7 +143,7 @@ ul.navbar-nav {
 }
 
 .modal {
-    position: absolute;
+    margin-top: 100px;
     color: black;
 }
 

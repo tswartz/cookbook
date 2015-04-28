@@ -18,8 +18,16 @@
             <button type="button" class="btn btn-default" ng-click="deleteRecipe(category)"><span class="fa fa-trash"/></button>
           </div>
           <div class="btn-group" role="group" aria-label="add">
-            <button type="button" class="btn btn-default" ng-click="addRecipe(category)"><span class="fa fa-plus"/></button>
+            <button type="button" class="btn btn-default" ng-click="addRecipe(category)">
+              <span class="fa fa-plus"/>
+            </button>
           </div>
+      </div>
+      <div class="recipe-control-bar" ng-show="!categoryHasRecipes(category)">
+        <button type="button" class="btn btn-default" ng-click="addRecipe(category)">
+          <span class="fa fa-plus"/>
+          <span>Add a new recipe</span>
+        </button>
       </div>
       <div>
         <div class="list-group recipe-list">
