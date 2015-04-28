@@ -94,7 +94,13 @@ app.controller('MyRecipesCtrl', function($scope, $http, $location)
         }
         $scope.newRecipe = recipe;
         $scope.submitRecipe = function (newRecipe) {
-            console.log("deleting", newRecipe);
+            $('#deleteRecipeModal').modal('hide');
+            $http.put('/removeRecipe', newRecipe)
+            .success(function (response) {
+                $scope.recipes = response;
+                $scope.categorizeRecipes();
+            });
         };
+        $('#deleteRecipeModal').modal('show');
     };
 });

@@ -215,6 +215,18 @@ app.put('/recipe', function(req, res) {
     });
 });
 
+// Deleting a recipe
+app.put('/removeRecipe', function(req, res) {
+    var recipeToRemove = req.body;
+    Recipe.remove({ name: recipeToRemove.name }, function (err) {
+      if (err) {
+        res.status(401).send('Error in deleting recipe');
+      } else {
+        sendAllRecipes(req, res);
+      }
+    });
+});
+
 // Look for openshift port and ip first, if not, host locally
 var ip = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
