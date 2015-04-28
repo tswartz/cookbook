@@ -46,6 +46,7 @@ app.controller('MyRecipesCtrl', function($scope, $http, $location)
             .success(function (response) {
                 $scope.recipes = response;
                 $scope.categorizeRecipes();
+                $scope.showRecipeContent(newRecipe, newRecipe.category);
             });
     	};
         if ($scope.form) {
