@@ -164,6 +164,10 @@ app.put('/category', function (req, res) {
             res.status(401).send('An error occurred');
         } else {
             var categories = doc.categories;
+            if (categories.indexOf(newCategory) != -1) {
+                res.status(401).send('There is already a category called ' + newCategory + '. Please choose a new name.');
+                return;
+            }
             var index = categories.indexOf(oldCategory);
             if (index != -1) {
                 categories[index] = newCategory;
