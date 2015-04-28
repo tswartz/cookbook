@@ -141,6 +141,10 @@ app.post('/category', function (req, res) {
             res.status(401).send('An error occurred');
         } else {
             var categories = doc.categories;
+            if (categories.indexOf(newCategory) != -1) {
+                res.status(401).send('There is already a category called ' + newCategory + '. Please choose a new name.');
+                return;
+            }
             categories.push(newCategory);
             User.update({username: req.user.username}, {"categories": categories}, function (err, updatedDoc) {
                 req.user.categories = categories;

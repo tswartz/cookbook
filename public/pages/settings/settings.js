@@ -20,6 +20,10 @@ app.controller('SettingsCtrl', function($scope, $http, $location)
             $http.post('/category', {newCategory: newCategory})
             .success(function (response) {
                 $scope.$parent.user = response;
+            })
+            .error(function (response) {
+                $scope.errorMessage = response;
+                $('#errorModal').modal('show');
             });
         }
         $('#addEditCategoryModal').modal('show');
