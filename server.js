@@ -189,6 +189,47 @@ app.put('/category', function (req, res) {
     });
 });
 
+app.put('/removeCategory', function (req, res) {
+    var categoryToDelete = req.body.categoryToDelete;
+    var newCategory = req.body.newCategory;
+    User.findOne({username: req.user.username}, function (err,doc) {
+        if (err) {
+            res.status(401).send('An error occurred');
+        } else {
+            var categories = doc.categories;
+            var index = categories.indexOf(categoryToDelete);
+            categories.splice(index, 1);
+            User.update({username: req.user.username}, {"categories": categories}, function (err, updatedDoc) {
+                if (err) {
+                    res.status(401).send('There was an error in deleting ' + categoryToDelete + '.');
+                } else {
+                    if (newCategory) {
+                        Recipe.update({username: req.user.username, "category": categoryToDelete}, {"category": newCategory}, {multi: true}, function (err, recipes) {
+                            if (err) {
+                                res.status(401).send('There was an error in deleting ' + categoryToDelete + '.');
+                            } else {
+                                req.user.categories = categories;
+                                res.send(req.user);
+                            }
+                        });
+                    } else {
+                        Recipe.remove({username: req.user.username, "category": categoryToDelete}, function (err, recipes) {
+                            if (err) {
+                                res.status(401).send('There was an error in deleting ' + categoryToDelete + '.');
+                            } else {
+                                req.user.categories = categories;
+                                res.send(req.user);
+                            }
+                        });
+                    }
+                    
+                }
+            });
+        }
+    });
+    
+});
+
 // Recipe Schema and Model -------------------------------
 var RecipeSchema = new mongoose.Schema({
     name: String,
