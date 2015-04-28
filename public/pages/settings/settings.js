@@ -47,7 +47,7 @@ app.controller('SettingsCtrl', function($scope, $http, $location)
             $http.put('/category', {newCategory: newCategory, oldCategory: $scope.selectedCategory})
             .success(function (response) {
                 $scope.$parent.user = response;
-                $scope.selectCategory = newCategory;
+                $scope.selectedCategory = newCategory;
             })
             .error(function (response) {
                 $scope.errorMessage = response;
