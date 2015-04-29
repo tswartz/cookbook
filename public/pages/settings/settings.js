@@ -12,12 +12,12 @@ app.controller('SettingsCtrl', function($scope, $http, $location)
         $scope.dialogTitle = "Add Category";
         $scope.dialogAction = "Add";
         $scope.newCategory = "";
-        if ($scope.form) {
-            $scope.form.$setPristine();
-            $scope.form.$setUntouched();
+        if ($scope.addEditform) {
+            $scope.addEditform.$setPristine();
+            $scope.addEditform.$setUntouched();
         }
         $scope.submitCategory = function (newCategory) {
-            if ($scope.form.$invalid) return;
+            if ($scope.addEditform.$invalid) return;
             $('#addEditCategoryModal').modal('hide');
             $http.post('/category', {newCategory: newCategory})
             .success(function (response) {
@@ -39,12 +39,12 @@ app.controller('SettingsCtrl', function($scope, $http, $location)
         $scope.dialogTitle = "Edit Category";
         $scope.dialogAction = "Save Changes";
         $scope.newCategory = $scope.selectedCategory;
-        if ($scope.form) {
-            $scope.form.$setPristine();
-            $scope.form.$setUntouched();
+        if ($scope.addEditform) {
+            $scope.addEditform.$setPristine();
+            $scope.addEditform.$setUntouched();
         }
         $scope.submitCategory = function (newCategory) {
-            if ($scope.form.$invalid) return;
+            if ($scope.addEditform.$invalid) return;
             $('#addEditCategoryModal').modal('hide');
             $http.put('/category', {newCategory: newCategory, oldCategory: $scope.selectedCategory})
             .success(function (response) {
@@ -64,24 +64,25 @@ app.controller('SettingsCtrl', function($scope, $http, $location)
             $('#selectRecipeModal').modal('show');
             return;
         }
-        $scope.deleteCategory = {moveRecipes: true};
+        $scope.deleteData = {moveRecipes: true, newCategory: ""};
         $scope.nonAllCategories = $scope.$parent.user.categories.filter(function(category){
-            return category != 'All' && category != $scope.selectedCategory;
+            return (category != 'All' && category != $scope.selectedCategory);
         });
-        if ($scope.form) {
-            $scope.form.$setPristine();
-            $scope.form.$setUntouched();
+        if ($scope.deleteform) {
+            $scope.deleteform.$setPristine();
+            $scope.deleteform.$setUntouched();
         }
-        $scope.submitCategory = function (deleteCategory) {
-            if ($scope.form.$invalid) return;
+        $scope.submitCategory = function (deleteData) {
+            if ($scope.deleteform.$invalid) return;
             $('#deleteCategoryModal').modal('hide');
-            var deleteData = {categoryToDelete : $scope.selectedCategory};
-            if (deleteCategory.moveRecipes) {
-                deleteData.newCategory = deleteCategory.newCategory;
+            var deleteDataJson = {categoryToDelete : $scope.selectedCategory};
+            if (deleteData.moveRecipes) {
+                deleteDataJson.newCategory = deleteData.newCategory;
             }
-            $http.put('/removeCategory', deleteData)
+            $http.put('/removeCategory', deleteDataJson)
             .success(function (response) {
                 $scope.$parent.user = response;
+                $scope.selectedCategory = undefined;
             })
             .error(function (response) {
                 $scope.errorMessage = response;

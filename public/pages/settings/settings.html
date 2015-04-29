@@ -31,11 +31,12 @@
             </button>
             <h4 class="modal-title" id="addEditCategoryModalLabel">{{dialogTitle}}</h4>
           </div>
-          <form name="form" novalidate>
+          <form name="addEditform" novalidate>
           <div class="modal-body">
-            <input type="text" name="name" placeholder="Category name..." class='form-control' ng-model="newCategory" required>
-            <div class="error-message" ng-show="form.$submitted">
-              <span ng-show="form.name.$error.required">Category name required.</span>
+            <input type="text" name="name" ng-pattern="/^[a-zA-Z0-9]+$/" placeholder="Category name..." class='form-control' ng-model="newCategory" required>
+            <div class="error-message" ng-show="addEditform.$submitted">
+              <span ng-show="addEditform.name.$error.required">Category name required.</span>
+              <span ng-show="addEditform.name.$error.pattern">Must be alphanumeric characters only. No spaces either!</span>
             </div>
           </div>
           <div class="modal-footer">
@@ -56,21 +57,21 @@
             </button>
             <h4 class="modal-title" id="deleteCategoryModalLabel">Delete Category?</h4>
           </div>
-          <form name="form" novalidate>
+          <form name="deleteform" novalidate>
           <div class="modal-body">
-            <input type="checkbox" id="moveRecipes" name="moveRecipes" ng-model="deleteCategory.moveRecipes">
+            <input type="checkbox" id="moveRecipes" name="moveRecipes" ng-model="deleteData.moveRecipes">
             <label for="moveRecipes">Move recipes in {{selectedCategory}} to another category</label>
-            <select name="newCategory" class="form-control" ng-show="deleteCategory.moveRecipes" ng-model="deleteCategory.newCategory" ng-required='deleteCategory.moveRecipes'>
+            <select name="newCategory" class="form-control" ng-show="deleteData.moveRecipes" ng-model="deleteData.newCategory" ng-required='deleteData.moveRecipes'>
               <option value="" disabled selected>Select category</option>
               <option ng-repeat="category in nonAllCategories" value="{{category}}">{{category}}</option>
             </select>
-            <div class="error-message" ng-show="form.$submitted">
-              <span ng-show="form.newCategory.$error.required">Category name required.</span>
+            <div class="error-message" ng-show="deleteform.$submitted">
+              <span ng-show="deleteform.newCategory.$error.required">Select a different category.</span>
             </div>
           </div>
           <div class="modal-footer">
               <button class="btn btn-default" data-dismiss="modal">Cancel</button>
-              <button type="submit" class="btn btn-primary" ng-click="submitCategory(deleteCategory)">Delete</button>
+              <button type="submit" class="btn btn-primary delete-submit" ng-click="submitCategory(deleteData)">Delete</button>
           </div>
         </form>
       </div>
