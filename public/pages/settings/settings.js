@@ -108,7 +108,7 @@ app.controller('SettingsCtrl', function($scope, $http, $location)
 
         })
         .error(function (response) {
-            $scope.passwordErrorMessage = response;
+            $scope.passwordErrorMessage = response + ' - password is invalid.';
         });
     }
 });
