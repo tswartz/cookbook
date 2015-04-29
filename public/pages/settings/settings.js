@@ -93,6 +93,22 @@ app.controller('SettingsCtrl', function($scope, $http, $location)
     }
 
     $scope.changePassword = function (passwordChange) {
-        console.log(passwordChange);
+        $scope.passwordSuccessMessage = "";
+        $scope.passwordErrorMessage = "";
+        if (passwordChange.newPassword != passwordChange.newPassword2) {
+            $scope.passwordErrorMessage = "Retyped password doesn't match.";
+            return;
+        }
+        passwordChange.username = $scope.$parent.user.username;
+        $http.put('/changePassword', passwordChange)
+        .success(function (response) {
+            $scope.$parent.user = response;
+            $scope.passwordChange = {};
+            $scope.passwordSuccessMessage = "Password changed successfully!";
+
+        })
+        .error(function (response) {
+            $scope.passwordErrorMessage = response;
+        });
     }
 });

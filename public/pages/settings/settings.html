@@ -38,7 +38,8 @@
         </div>
         <div class="panel-body">
           <p class="error-message">{{passwordErrorMessage}}</p>
-          <input type="password" class="form-control" placeholder="Old password" ng-model="passwordChange.oldPassword"><br/>
+          <p class="success-message">{{passwordSuccessMessage}}</p>
+          <input type="password" class="form-control" placeholder="Old password" ng-model="passwordChange.password"><br/>
           <input type="password" class="form-control" placeholder="New password" ng-model="passwordChange.newPassword"><br/>
           <input type="password" class="form-control" placeholder="Retype new password" ng-model="passwordChange.newPassword2"><br/>
           <button type="button" class="btn btn-primary" ng-click="changePassword(passwordChange)">Submit</button>

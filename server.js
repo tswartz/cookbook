@@ -134,6 +134,16 @@ function insertNewUser(req, res, newuser)  {
     });
 }
 
+app.put('/changePassword', passport.authenticate('local'), function (req, res) {
+    User.update({username: req.user.username}, {password: req.body.newPassword}, function (err,docs) {
+        if (err) {
+            res.status(401).send('Error in changing password.');
+        } else {
+            res.send(req.user);
+        }
+    });
+});
+
 // Adding a new category
 app.post('/category', function (req, res) {
     var newCategory = req.body.newCategory;
