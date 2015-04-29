@@ -10,6 +10,10 @@ nav * {
     color: white;
 }
 
+nav.white-background {
+    background: white;
+}
+
 nav.white-background * {
     color: black;
 }
@@ -105,8 +109,15 @@ ul.navbar-nav {
     cursor: pointer;
 }
 
-.toolbar, .no-recipes-message {
+.left {
+    text-align: left;
+}
+
+.center, .no-recipes-message {
     text-align: center;
+}
+
+.toolbar, .no-recipes-message {
     padding: 10px 0px;
     color: gray;
 }
@@ -170,10 +181,8 @@ ul.navbar-nav {
 }
 
 .categories-list {
-    margin: 0px auto;
-    width: 50%;
     overflow-y: scroll;
-    height: 420px;
+    height: 300px;
 }
 
 .recipe-thumbnail h3 {
