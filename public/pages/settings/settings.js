@@ -91,4 +91,8 @@ app.controller('SettingsCtrl', function($scope, $http, $location)
         }
         $('#deleteCategoryModal').modal('show');
     }
+
+    $scope.changePassword = function (passwordChange) {
+        console.log(passwordChange);
+    }
 });

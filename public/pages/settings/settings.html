@@ -37,9 +37,11 @@
           <h3 class="panel-title">Change Password</h3>
         </div>
         <div class="panel-body">
-          <input type="text" class="form-control" placeholder="Old password">
-          <input type="text" class="form-control" placeholder="New password">
-          <input type="text" class="form-control" placeholder="Retype new password">
+          <p class="error-message">{{passwordErrorMessage}}</p>
+          <input type="password" class="form-control" placeholder="Old password" ng-model="passwordChange.oldPassword"><br/>
+          <input type="password" class="form-control" placeholder="New password" ng-model="passwordChange.newPassword"><br/>
+          <input type="password" class="form-control" placeholder="Retype new password" ng-model="passwordChange.newPassword2"><br/>
+          <button type="button" class="btn btn-primary" ng-click="changePassword(passwordChange)">Submit</button>
         </div>
       </div>
     </div>
