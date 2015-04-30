@@ -106,6 +106,8 @@ ul.navbar-nav {
 .page-title {
     text-align: center;
     margin-bottom: 20px;
+    font-size: 28px;
+    font-family: 'Arbutus Slab', serif;
 }
 
 .page-subtitle {
@@ -154,6 +156,11 @@ ul.navbar-nav {
     color: #555;
     background-color: #f5f5f5;
     cursor: pointer;
+}
+
+.list-group-item.disabled {
+    color: #ADADAD;
+    background: white;
 }
 
 .recipe-list, .recipe-content {

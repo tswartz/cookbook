@@ -5,12 +5,14 @@ app.controller('CookbookController', function($scope, $http, $location, $sce)
     $scope.showSplashImg = function () {
         $('.home-splash-gradient').show()
         $('.home-splash-img').show()
+        $('.navbar-brand img').attr('src', 'logo_white.png')
         $('nav').removeClass('white-background');
     }
 
     $scope.hideSplashImg = function () {
         $('.home-splash-gradient').hide()
         $('.home-splash-img').hide()
+        $('.navbar-brand img').attr('src', 'logo_black.png')
         $('nav').addClass('white-background');
     }
 
