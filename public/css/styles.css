@@ -1,9 +1,13 @@
 body {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Oxygen', sans-serif;
     font-size: 14px;
     color: #333;
     margin: 0px;
     margin-top: 80px;
+}
+
+nav {
+    padding: 10px 0px;
 }
 
 nav * {
@@ -21,7 +25,7 @@ nav.white-background * {
 .navbar-brand {
     font-family: 'Arbutus Slab', serif;
     font-size: 55px;
-    vertical-align: baseline;
+    padding: 3px;
 }
 
 .navbar-brand img {
@@ -31,9 +35,9 @@ nav.white-background * {
     margin-right: -5px;
 }
 
-/*ul.navbar-nav {
-    margin-top: 8px;
-}*/
+ul.navbar-nav {
+    margin-top: 14px;
+}
 
 .navbar-toggle, .navbar-toggle .icon-bar {
     border: 1px solid #BBB;
