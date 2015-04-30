@@ -4,7 +4,10 @@
   <!-- Tabs with category names -->
   <ul class="nav nav-tabs" role="tablist">
     <li ng-repeat="category in $parent.user.categories" role="presentation">
-      <a data-target="#{{category}}" aria-controls="{{category}}" role="tab" data-toggle="tab">{{category}}</a>
+      <a data-target="#{{category}}" aria-controls="{{category}}" role="tab" data-toggle="tab">
+        {{category}}
+        <span class="badge">{{categorizedRecipes[category].length}}</span>
+      </a>
     </li>
   </ul>
   <!-- Tab content for each category -->

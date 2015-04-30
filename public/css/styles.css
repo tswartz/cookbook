@@ -122,6 +122,10 @@ ul.navbar-nav {
     cursor: pointer;
 }
 
+.nav-tabs .badge {
+    background: #A6A6A6;
+}
+
 .left {
     text-align: left;
 }
