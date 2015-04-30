@@ -19,18 +19,21 @@ nav.white-background * {
 }
 
 .navbar-brand {
-    font-family: 'Lobster', cursive;
-    font-size: 40px;
+    font-family: 'Arbutus Slab', serif;
+    font-size: 55px;
+    vertical-align: baseline;
 }
 
 .navbar-brand img {
-    margin-top: -10px;
+    height: 60px;
+    vertical-align: baseline;
     display: inline;
+    margin-right: -5px;
 }
 
-ul.navbar-nav {
+/*ul.navbar-nav {
     margin-top: 8px;
-}
+}*/
 
 .navbar-toggle, .navbar-toggle .icon-bar {
     border: 1px solid #BBB;
