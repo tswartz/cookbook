@@ -293,9 +293,15 @@ app.post('/recipe', function(req, res) {
 });
 
 var updateRecipe = function (updatedRecipe, origName, req, res) {
-    Recipe.update({name: origName, username: req.user.username}, updatedRecipe, function (err, recipe) {
+    var updatedRecipeObj = {
+        name: updatedRecipe.name,
+        content: updatedRecipe.content,
+        category: updatedRecipe.category,
+        username: updatedRecipe.username
+    };
+    Recipe.update({name: origName, username: req.user.username}, updatedRecipeObj, function (err, recipe) {
         if (err) {
-            res.status(401).send('Error in editing recipe');
+            res.status(401).send(err);
         } else {
             sendAllRecipes(req, res);
         }
