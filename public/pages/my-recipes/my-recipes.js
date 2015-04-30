@@ -36,6 +36,7 @@ app.controller('MyRecipesCtrl', function($scope, $http, $location)
 
     $scope.showRecipeContent = function (recipe, category) {
     	$scope.selectedRecipes[category] = recipe;
+        $('.tab-pane#' + category + ' pre').text(recipe.content);
     };
 
     $scope.addRecipe = function (category) {
@@ -48,7 +49,7 @@ app.controller('MyRecipesCtrl', function($scope, $http, $location)
             .success(function (response) {
                 $scope.recipes = response;
                 $scope.categorizeRecipes();
-                $scope.showRecipeContent(newRecipe, newRecipe.category);
+                $scope.showRecipeContent(newRecipe, category);
             })
             .error(function (response) {
                 $scope.errorMessage = response;

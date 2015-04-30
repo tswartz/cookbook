@@ -167,6 +167,11 @@ ul.navbar-nav {
     height: 420px;
 }
 
+pre {
+    font-family: 'Oxygen', serif;
+    background: white;
+}
+
 .recipe-content {
     width: 48%;
     border: 1px solid #ddd;
@@ -183,6 +188,15 @@ ul.navbar-nav {
 
 .modal-body > * {
     margin: 10px 0px;
+}
+
+.modal-dialog pre {
+    padding: 0px;
+    border: none;
+}
+
+.modal-dialog textarea {
+    height: 100px;
 }
 
 .recipe-search-input-group {

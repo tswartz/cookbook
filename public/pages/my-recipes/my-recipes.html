@@ -36,9 +36,7 @@
             {{recipe.name}}
           </li>
         </div>
-        <p class="recipe-content" ng-show="categoryHasRecipes(category)">
-          <span ng-show="selectedRecipes[category]">{{selectedRecipes[category].content}}</span>
-        </p>
+        <pre class="recipe-content" ng-show="categoryHasRecipes(category)"></pre>
       </div>
     </div>
   </div>
@@ -66,7 +64,7 @@
             <div class="error-message" ng-show="form.$submitted">
               <span ng-show="form.category.$error.required">Category required.</span>
             </div>
-            <textarea name="content" placeholder="Recipe content..." class='form-control' ng-model="newRecipe.content" required></textarea>
+            <pre><textarea name="content" placeholder="Recipe content..." class='form-control' ng-model="newRecipe.content" required></textarea></pre>
             <div class="error-message" ng-show="form.$submitted">
               <span ng-show="form.content.$error.required">Recipe content required.</span>
             </div>
