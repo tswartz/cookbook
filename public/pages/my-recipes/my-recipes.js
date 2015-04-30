@@ -35,9 +35,17 @@ app.controller('MyRecipesCtrl', function($scope, $http, $location)
     };
 
     $scope.showRecipeContent = function (recipe, category) {
+        $('.tab-pane#' + category + ' pre').empty();
     	$scope.selectedRecipes[category] = recipe;
-        $('.tab-pane#' + category + ' pre').text(recipe.content);
+        var formattedContent = $scope.formatRecipeContent(recipe.content);
+        $('.tab-pane#' + category + ' pre').append(formattedContent);
     };
+
+    $scope.formatRecipeContent = function (content) {
+        return content.replace(/https?:\/\/\S+/g, function (str) {
+            return '<a href="' + str + '" target="_blank">' + str + '</a>'
+        });
+    }
 
     $scope.addRecipe = function (category) {
     	$scope.dialogTitle = "Add New Recipe";
@@ -49,7 +57,6 @@ app.controller('MyRecipesCtrl', function($scope, $http, $location)
             .success(function (response) {
                 $scope.recipes = response;
                 $scope.categorizeRecipes();
-                $scope.showRecipeContent(newRecipe, category);
             })
             .error(function (response) {
                 $scope.errorMessage = response;
